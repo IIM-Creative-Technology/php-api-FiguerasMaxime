@@ -18,6 +18,9 @@ class Matiere extends Model
         'name',
         'date_start',
         'date_end',
+        'promotion_year',
+        'intervenant_id',
+        'classe_id',
     ];
 
     /**
@@ -29,5 +32,17 @@ class Matiere extends Model
         'created_at',
         'updated_at',
     ];
+
+    public function prof() {
+        return $this->belongsTo(Prof::class);
+    }
+
+    public function classes() {
+        return $this->hasMany(Classe::class);
+    }
+
+    public function notes() {
+        return $this->hasMany(Note::class);
+    }
 
 }

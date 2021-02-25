@@ -30,4 +30,8 @@ class Prof extends Model
         'updated_at',
     ];
 
+    public function matieres() {
+        return $this->hasMany(Matiere::class);
+    }
+
 }

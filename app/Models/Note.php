@@ -4,6 +4,7 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use PHPUnit\Framework\MockObject\Builder\Stub;
 
 class Note extends Model
 {
@@ -30,4 +31,11 @@ class Note extends Model
         'updated_at',
     ];
 
+    public function matiere() {
+        return $this->belongsTo(Matiere::class);
+    }
+
+    public function student() {
+        return $this->belongsTo(Student::class);
+    }
 }

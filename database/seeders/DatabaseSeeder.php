@@ -3,6 +3,10 @@
 namespace Database\Seeders;
 
 use Illuminate\Database\Seeder;
+use Illuminate\Support\Facades\DB;
+
+use App\Models\Classe;
+use App\Models\Student;
 
 class DatabaseSeeder extends Seeder
 {
@@ -13,6 +17,14 @@ class DatabaseSeeder extends Seeder
      */
     public function run()
     {
-        // \App\Models\User::factory(10)->create();
+        DB::statement('SET FOREIGN_KEY_CHECKS=0;');
+
+        DB::table('classes')->truncate();
+        DB::table('students')->truncate();
+
+        Classe::factory(5)->create();
+        Student::factory(25)->create();
+
+        DB::statement('SET FOREIGN_KEY_CHECKS=1;');
     }
 }

@@ -18,8 +18,7 @@ class Matiere extends Model
         'name',
         'date_start',
         'date_end',
-        'promotion_year',
-        'intervenant_id',
+        'prof_id',
         'classe_id',
     ];
 

@@ -7,6 +7,7 @@ use Illuminate\Support\Facades\DB;
 
 use App\Models\Classe;
 use App\Models\Matiere;
+use App\Models\Note;
 use App\Models\Prof;
 use App\Models\Student;
 
@@ -25,11 +26,13 @@ class DatabaseSeeder extends Seeder
         DB::table('students')->truncate();
         DB::table('profs')->truncate();
         DB::table('matieres')->truncate();
+        DB::table('notes')->truncate();
 
         Classe::factory(5)->create();
-        Student::factory(25)->create();
+        Student::factory(30)->create();
         Prof::factory(10)->create();
         Matiere::factory(15)->create();
+        Note::factory(30)->create();
 
         DB::statement('SET FOREIGN_KEY_CHECKS=1;');
     }

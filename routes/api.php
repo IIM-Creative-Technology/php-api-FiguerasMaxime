@@ -1,6 +1,7 @@
 <?php
 
 use App\Models\Classe;
+use App\Models\Matiere;
 use App\Models\Student;
 use App\Models\Prof;
 use Illuminate\Http\Request;
@@ -112,4 +113,35 @@ Route::delete('/profs/{ProfId}', function($ProfId){
 //ajout d'un étudiant
 Route::post('/profs', function(Request $request) {
     return Prof::create($request->all());
+});
+
+// 
+// ROUTE MATIERE
+//
+
+//affichage de toutes les intervenants
+Route::get('/matieres', function() {
+    return Matiere::all();
+});
+
+//affichage de les intervenants sélectionnée
+Route::get('/matieres/{MatiereId}', function($MatiereId) {
+    return Matiere::findOrFail($MatiereId);
+});
+
+//modification des infos de l'intervenant sélectionnée
+Route::put('/matieres/{MatiereId}', function($MatiereId, Request $request) {
+    $matiere = Matiere::findOrFail($MatiereId);
+    $matiere -> update($request->all());
+    return $matiere;
+});
+
+//suppression d'un étudiant
+Route::delete('/matieres/{MatiereId}', function($MatiereId){
+    return Matiere::findOrFail($MatiereId)->delete();
+});
+
+//ajout d'un étudiant
+Route::post('/matieres', function(Request $request) {
+    return Matiere::create($request->all());
 });

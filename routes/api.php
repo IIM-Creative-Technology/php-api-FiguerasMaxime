@@ -2,10 +2,12 @@
 
 use App\Models\Classe;
 use App\Models\Matiere;
+use App\Models\Note;
 use App\Models\Student;
 use App\Models\Prof;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
+use Mockery\Matcher\Not;
 
 /*
 |--------------------------------------------------------------------------
@@ -119,29 +121,48 @@ Route::post('/profs', function(Request $request) {
 // ROUTE MATIERE
 //
 
-//affichage de toutes les intervenants
+//affichage de toutes les matieres
 Route::get('/matieres', function() {
     return Matiere::all();
 });
 
-//affichage de les intervenants sélectionnée
+//affichage de la matiere sélectionnée
 Route::get('/matieres/{MatiereId}', function($MatiereId) {
     return Matiere::findOrFail($MatiereId);
 });
 
-//modification des infos de l'intervenant sélectionnée
+//modification des infos de la matière sélectionnée
 Route::put('/matieres/{MatiereId}', function($MatiereId, Request $request) {
     $matiere = Matiere::findOrFail($MatiereId);
     $matiere -> update($request->all());
     return $matiere;
 });
 
-//suppression d'un étudiant
+//suppression d'une matière
 Route::delete('/matieres/{MatiereId}', function($MatiereId){
     return Matiere::findOrFail($MatiereId)->delete();
 });
 
-//ajout d'un étudiant
+//ajout d'une matière
 Route::post('/matieres', function(Request $request) {
     return Matiere::create($request->all());
+});
+
+// 
+// ROUTE NOTE
+//
+
+//affichage de toutes les notes
+Route::get('/notes', function() {
+    return Note::all();
+});
+
+//suppression d'une note
+Route::delete('/notes/{NoteId}', function($NoteId){
+    return Note::findOrFail($NoteId)->delete();
+});
+
+//ajout d'une note
+Route::post('/notes', function(Request $request) {
+    return Note::create($request->all());
 });

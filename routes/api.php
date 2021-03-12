@@ -2,6 +2,7 @@
 
 use App\Models\Classe;
 use App\Models\Student;
+use App\Models\Prof;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 
@@ -80,4 +81,35 @@ Route::delete('/students/{StudentId}', function($StudentId){
 //ajout d'un étudiant
 Route::post('/students', function(Request $request) {
     return Student::create($request->all());
+});
+
+// 
+// ROUTE PROF
+//
+
+//affichage de toutes les intervenants
+Route::get('/profs', function() {
+    return Prof::all();
+});
+
+//affichage de les intervenants sélectionnée
+Route::get('/profs/{ProfId}', function($ProfId) {
+    return Prof::findOrFail($ProfId);
+});
+
+//modification des infos de l'intervenant sélectionnée
+Route::put('/profs/{ProfId}', function($ProfId, Request $request) {
+    $prof = Prof::findOrFail($ProfId);
+    $prof -> update($request->all());
+    return $prof;
+});
+
+//suppression d'un étudiant
+Route::delete('/profs/{ProfId}', function($ProfId){
+    return Prof::findOrFail($ProfId)->delete();
+});
+
+//ajout d'un étudiant
+Route::post('/profs', function(Request $request) {
+    return Prof::create($request->all());
 });

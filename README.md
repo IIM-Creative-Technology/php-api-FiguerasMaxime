@@ -5,6 +5,11 @@ Voici la documentation de cet API si vous avez besoin d'aide. (
 
 En espérant que cela marche de votre côté INSHALLAH.
 
+## Important 
+
+Vous devez allez dans la base de données pour récupérer le token généré pour le User, ce token permet la sécurisation des calls API dans le header.
+Renseignez ce token dans l'onglet Authorization avec la clé api_token et la valeur du token pour avoir accès.
+
 ## Route à utiliser
 
 L'ensemble des routes pour vos call API : 

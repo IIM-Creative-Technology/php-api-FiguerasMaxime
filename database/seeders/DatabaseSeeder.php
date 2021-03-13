@@ -10,6 +10,7 @@ use App\Models\Matiere;
 use App\Models\Note;
 use App\Models\Prof;
 use App\Models\Student;
+use App\Models\User;
 
 class DatabaseSeeder extends Seeder
 {
@@ -27,12 +28,14 @@ class DatabaseSeeder extends Seeder
         DB::table('profs')->truncate();
         DB::table('matieres')->truncate();
         DB::table('notes')->truncate();
+        DB::table('users')->truncate();
 
         Classe::factory(5)->create();
         Student::factory(30)->create();
         Prof::factory(10)->create();
         Matiere::factory(15)->create();
         Note::factory(30)->create();
+        User::factory(1)->create();
 
         DB::statement('SET FOREIGN_KEY_CHECKS=1;');
     }
